@@ -12,7 +12,13 @@ This requires python 3.11.9, and the PyYAML package. You can install it using:
 
 To run this program, you must have a valid changelog in the `.yml` format.
 
+### Running from the command line
+
 `python changelog_compiler.py [-h] [-d] [-n] [-o OUTPUT_FILE] input_file`
+
+### Running with VSC
+
+This repo comes with a `launch.json` file configured with 2 launch configurations. One allows the user to input the arguments manually, the other has a pre-defined lists of arguments, which can be changed by the user. These can be used from the "Run and Debug" panel of VSC.
 
 ### Options
 
