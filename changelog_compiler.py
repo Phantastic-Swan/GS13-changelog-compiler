@@ -59,18 +59,18 @@ def print_changelog(print_dates: bool = False,
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="GS13 changelog compiler",
+        prog="changelog_compiler.py",
         description="This program is meant to compile GS13 changelogs \
         into easily copy-able format for news/update announcements"
     )
     parser.add_argument("input_file", type=valid_file,
                         help = "The path to the original .yml changelog file.")
     parser.add_argument("-d", "--print-dates", action="store_true", 
-                        help="Whether the changes should be sorted by date.")
+                        help="Optional. Whether the changes should be sorted by date. Defaults to false.")
     parser.add_argument("-n", "--print-names", action="store_true",
-                        help="Whether the changes should be sorted by author.")
-    parser.add_argument("-o", "--output-file-name", default="Changelog.txt",
-                        help="The name of the output file. Can be a path to a folder too.")
+                        help="Optional. Whether the changes should be sorted by author. Defaults to false.")
+    parser.add_argument("-o", "--output-file", default="Changelog.txt",
+                        help="Optional. The name of the output file. Can be a path to a folder too. Defaults to the current directory.")
 
     args = parser.parse_args()
 
@@ -82,7 +82,7 @@ def main():
     input_path: str = args.input_file
     print_dates: bool = args.print_dates
     print_names: bool = args.print_names
-    output_file_name: str = args.output_file_name
+    output_file_name: str = args.output_file
 
     if not input_path.endswith(".yaml") and not input_path.endswith(".yml"):
         print("File is not in YAML/YML format!")
