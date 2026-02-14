@@ -22,15 +22,8 @@
                 "-d",
                 "-n",
                 "-o", "changelog_file.txt",
-                "2026-02.yml",
+                "../2025-11.yml",
             ],
         },
-        {
-            "name": "Current File",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        }
     ]
 }
