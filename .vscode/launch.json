@@ -20,7 +20,7 @@
             "console": "integratedTerminal",
             "args": [
                 "-d",
-                // "-n",
+                "-n",
                 "-o", "changelog_file.txt",
                 "2026-02.yml",
             ],
