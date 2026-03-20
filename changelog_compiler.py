@@ -1,22 +1,34 @@
 import yaml
 import argparse
 import os
+from datetime import datetime
 
 def valid_file(path):
     if not os.path.isfile(path):
         raise argparse.ArgumentTypeError(f"{path} is not a valid file")
     return path
 
-def print_changelog(print_dates: bool = False, 
-                    print_names: bool = False, 
-                    input_path: str = "./", 
-                    output_file_name: str = "Changelog.txt"):
+def print_intro() -> str:
+    day = int(datetime.today().strftime("%d"))
+
+    half = ""
+    if day > 15:
+        half = "second"
+    else:
+        half = "first"
+    
+    month_text = datetime.today().strftime("%B %Y")
+
+    return "# Changes in the "+ half +" half of " + month_text + " :\n\n"
+
+def read_yaml(print_dates: bool = False, 
+                print_names: bool = False, 
+                input_path: str = "./"):
     
     file = open(input_path, 'r')
     yaml_file = yaml.safe_load(file)
     file.close()
-    output_file = open(output_file_name, 'w')
-
+    
     changelog: dict = dict()
 
     for date in yaml_file:
@@ -42,16 +54,32 @@ def print_changelog(print_dates: bool = False,
                 for item in changes:
                     changelog[printed_date][printed_name].append(item)
     
+    return changelog
+
+def print_changelog(print_dates: bool = False, 
+                    print_names: bool = False, 
+                    input_path: str = "./", 
+                    output_file_name: str = "Changelog.txt"):
+
+    output_file = open(output_file_name, 'w')
+
+    changelog: dict = read_yaml(print_dates, print_names, input_path)
+    
+    output_file.write(print_intro())
+
     for date in changelog:
         if print_dates:
             output_file.write(date.strftime("%x") + ":\n")
+        
         for author in changelog[date]:
             if print_names:
-                output_file.write("Changes by " + author + ":\n")
+                output_file.write("## Changes by " + author + ":\n")
+            
             for change in changelog[date][author]:
                 output: str = "- " + change
                 if not output.endswith("."):
                     output += "."
+                
                 output += "\n"
                 output_file.write(output)
 
@@ -73,11 +101,6 @@ def main():
                         help="Optional. The name of the output file. Can be a path to a folder too. Defaults to the current directory.")
 
     args = parser.parse_args()
-
-    # print("Input file:", full_input_path)
-    # print("Sort by dates:", args.print_dates)
-    # print("Sort by names:", args.print_names)
-    # print("Output file:", args.output_file_name)
 
     input_path: str = args.input_file
     print_dates: bool = args.print_dates
