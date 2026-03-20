@@ -19,7 +19,7 @@ def print_intro() -> str:
     
     month_text = datetime.today().strftime("%B %Y")
 
-    return "# Changes in the "+ half +" half of " + month_text + " :\n\n"
+    return "# Changes in the "+ half +" half of " + month_text + ":\n\n"
 
 def read_yaml(print_dates: bool = False, 
                 print_names: bool = False, 
