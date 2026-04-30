@@ -13,7 +13,7 @@
             "args": "${command:pickArgs}"
         },
         {
-            "name": "Default Arguments",
+            "name": "Default Example Arguments",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
@@ -22,7 +22,28 @@
                 "-d",
                 "-n",
                 "-o", "changelog_file.txt",
-                "../2025-11.yml",
+                "../input.yml",
+            ],
+        },
+        {
+            "name": "Default Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "-n",
+                "../input.yml",
+            ],
+        },
+        {
+            "name": "No names no dates",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "../input.yml",
             ],
         },
     ]
