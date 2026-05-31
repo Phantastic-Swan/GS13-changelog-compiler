@@ -5,7 +5,7 @@
             "name": "Custom Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "changelog_compiler.py",
             "console": "integratedTerminal",
             "args": "${command:pickArgs}"
         },
@@ -13,7 +13,7 @@
             "name": "Default Example Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "changelog_compiler.py",
             "console": "integratedTerminal",
             "args": [
                 "-d",
@@ -26,7 +26,7 @@
             "name": "Only names",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "changelog_compiler.py",
             "console": "integratedTerminal",
             "args": [
                 "-n",
@@ -37,7 +37,7 @@
             "name": "Only dates",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "changelog_compiler.py",
             "console": "integratedTerminal",
             "args": [
                 "-d",
@@ -48,7 +48,7 @@
             "name": "No names no dates",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "changelog_compiler.py",
             "console": "integratedTerminal",
             "args": [
                 "input.yml",
