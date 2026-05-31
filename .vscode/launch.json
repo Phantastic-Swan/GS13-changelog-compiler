@@ -54,5 +54,17 @@
                 "input.yml",
             ],
         },
+        {
+            "name": "Names, dates, the whole shabang",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "changelog_compiler.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-n",
+                "-d",
+                "input.yml",
+            ],
+        },
     ]
 }
